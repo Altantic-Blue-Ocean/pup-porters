@@ -32,6 +32,12 @@ const useStyles = makeStyles({
   },
   dog: {
     width: 300,
+  },
+  petMe: {
+    fontSize: 70,
+    color: 'white',
+    fontWeight: 300,
+    marginTop: '10%'
   }
 });
 
@@ -48,6 +54,7 @@ const App = (props) => {
           <img src='/dog.png'
             className={classes.dog}
             onClick={() => setView(true) }></img>
+          <Typography className={classes.petMe}>Pet Me!</Typography>
         </div>
       </div>
       </div>

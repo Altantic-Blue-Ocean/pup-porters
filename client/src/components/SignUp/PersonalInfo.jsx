@@ -100,7 +100,7 @@ const PersonalInfo = (props) => {
             className={classes.button}
             onClick={() => {
               setView('dogtype');
-              props.inputUserInfo(view, email, password);
+              props.inputUserInfo(props.role, email, password);
             }}>
             Submit
           </Button>

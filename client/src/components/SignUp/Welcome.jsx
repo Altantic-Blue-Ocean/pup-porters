@@ -67,7 +67,7 @@ const Welcome = () => {
       cvv: cvv,
       zip_code: zip
     };
-    console.log(data);
+    console.log(isCaregiver);
     // axios.post('/signup', data)
     //   .then((res) => {
     //     console.log('successfully posted')
@@ -143,20 +143,20 @@ const Welcome = () => {
           <Login/>
         </div>
       </Slide>)
-  } else if (view === 'caregiver') {
+  } else if (isCaregiver === true) {
     return (
       <Slide direction="up" in={true}>
         <div>
           <Drawer/>
-          <MainGoogleMap/>
+          <MainGoogleMap role={view}/>
         </div>
       </Slide>)
-  } else if (view === 'remover') {
+  } else if (isCaregiver === false) {
     return (
       <Slide direction="up" in={true}>
         <div>
           <Drawer/>
-          <MainGoogleMap/>
+          <MainGoogleMap role={view}/>
         </div>
       </Slide>
     )
