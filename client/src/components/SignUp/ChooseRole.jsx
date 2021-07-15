@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Slide, Typography } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom'
-
-import PersonalInfo from './PersonalInfo.jsx';
-import Welcome from './Welcome.jsx';
 
 const useStyles = makeStyles({
   outer: {
@@ -32,8 +29,6 @@ const useStyles = makeStyles({
     margin: 30,
   }
 });
-
-
 
 const ChooseRole = (props) => {
   const classes = useStyles();

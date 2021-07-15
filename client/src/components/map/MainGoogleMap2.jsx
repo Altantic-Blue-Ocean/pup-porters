@@ -8,12 +8,9 @@ import Drawer from  '../Drawer.jsx';
 const MainGoogleMap2 = () => {
 
   return (
-    <div className="App" style={{ width: '200%', marginLeft: '5%'}}>
+    <div style={{ width: '200%', marginLeft: '5%'}}>
       <br /><br />
-      <Drawer />
-      {/* <CaregiverMap/> */}
       <RemoverMap/>
-      {/* <DropOffMap/> */}
     </div>
   );
 };

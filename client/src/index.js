@@ -18,6 +18,8 @@ const theme = createTheme({
   },
   typography: {
     fontSize: 24,
+    fontWeight: 'fontWeightLight'
+
   }
 });
 

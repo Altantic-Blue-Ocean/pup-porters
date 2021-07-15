@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth } from "../firebase"
+import axios from 'axios';
 
 const AuthContext = React.createContext()
 
@@ -10,6 +11,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
+  const [userInfo, setUserInfo] = useState({})
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -23,17 +25,19 @@ export function AuthProvider({ children }) {
     return auth.signOut()
   }
 
-  // function resetPassword(email) {
-  //   return auth.sendPasswordResetEmail(email)
-  // }
-
-  // function updateEmail(email) {
-  //   return currentUser.updateEmail(email)
-  // }
-
-  // function updatePassword(password) {
-  //   return currentUser.updatePassword(password)
-  // }
+  function getUserInfo() {
+    axios.get('/user', {
+      params: {
+        id: currentUser.id
+      }
+    })
+    .then(response => {
+      setUserInfo(response.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -49,9 +53,6 @@ export function AuthProvider({ children }) {
     login,
     signup,
     logout,
-    // resetPassword,
-    // updateEmail,
-    // updatePassword
   }
 
   return (

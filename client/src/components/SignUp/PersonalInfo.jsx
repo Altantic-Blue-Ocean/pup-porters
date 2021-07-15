@@ -137,6 +137,7 @@ async function handleSubmit() {
             Submit
           </Button>
           <Button
+            onClick={()=>history.go(-1)}
             variant="contained"
             className={classes.button}
             >

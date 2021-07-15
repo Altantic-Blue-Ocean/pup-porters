@@ -5,3 +5,4 @@ bundle.js
 config.js
 client/dist/bundle.js
 .env
+.firebase

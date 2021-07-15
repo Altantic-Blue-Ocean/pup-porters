@@ -6,6 +6,7 @@ const app = express()
 const PORT = 300;
 
 const filePath = path.join(__dirname, '../client/dist');
+
 const serveStatic = express.static(filePath);
 
 app.use(serveStatic);

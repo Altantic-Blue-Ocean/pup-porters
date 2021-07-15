@@ -12,6 +12,7 @@ import {
   Typography
 } from '@material-ui/core';
 import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext"
 import MenuIcon from '@material-ui/icons/MenuOutlined';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +51,20 @@ export default function SwipeableTemporaryDrawer() {
   const [state, setState] = useState({
     left: false,
   });
+  const [error, setError] = useState("")
+  const { currentUser, logout } = useAuth()
+  const history = useHistory()
+
+  async function handleLogout() {
+    setError("")
+
+    try {
+      await logout()
+      history.push("/login")
+    } catch {
+      setError("Failed to log out")
+    }
+  }
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -97,8 +112,11 @@ export default function SwipeableTemporaryDrawer() {
       <Typography component={Link} to="/dropoffmap">
         Drop Off
       </Typography>
+      <Typography onClick={handleLogout}>
+        Logout
+      </Typography>
 
-      <Divider />
+
     </div>
   );
 
