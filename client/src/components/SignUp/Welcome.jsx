@@ -7,6 +7,7 @@ import Drawer from '../Drawer.jsx';
 import ChooseRole from './ChooseRole.jsx';
 import Login from './Login.jsx';
 import MainGoogleMap from '../map/MainGoogleMap.jsx';
+import MainGoogleMap2 from '../map/MainGoogleMap2.jsx';
 
 const useStyles = makeStyles({
   outer: {
@@ -99,7 +100,6 @@ const Welcome = () => {
     setExpYear(expYear);
     setCvv(cvv);
     setZip(zip);
-    sendUserInfo();
   }
 
   if (!view) {
@@ -143,7 +143,7 @@ const Welcome = () => {
           <Login/>
         </div>
       </Slide>)
-  } else if (isCaregiver === true) {
+  } else if (view === 'caregiver') {
     return (
       <Slide direction="up" in={true}>
         <div>
@@ -151,12 +151,12 @@ const Welcome = () => {
           <MainGoogleMap role={view}/>
         </div>
       </Slide>)
-  } else if (isCaregiver === false) {
+  } else if (view === 'remover') {
     return (
       <Slide direction="up" in={true}>
         <div>
           <Drawer/>
-          <MainGoogleMap role={view}/>
+          <MainGoogleMap2/>
         </div>
       </Slide>
     )

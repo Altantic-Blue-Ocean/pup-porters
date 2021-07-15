@@ -8,6 +8,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Slide } from '@material-ui/core';
 
 const useStyles = makeStyles({
+  outer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  head: {
+    width: 700,
+    marginBottom: '10%',
+  },
+  instruction: {
+    fontSize: 75,
+    fontWeight: 300,
+  },
   button: {
     height: 100,
     width: 500,
@@ -16,7 +28,7 @@ const useStyles = makeStyles({
     fontSize: 30,
   },
   buttons: {
-    margin: 50,
+    margin: 100,
     marginLeft: '-25%',
     display: 'flex',
     flexDirection: 'column',
@@ -95,6 +107,17 @@ console.log(selected)
 
     return (
       <div>
+        <div className={classes.outer}>
+          <div className={classes.head}>
+            {!markers.length ?
+              (<Typography className={classes.instruction}>
+                Place pup porter flag
+                within 2” of pup pile</Typography>) :
+              (<Typography className={classes.instruction}>
+                Post with Details</Typography>)
+          }
+          </div>
+        </div>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={{
@@ -131,18 +154,17 @@ console.log(selected)
         )}
         </GoogleMap>
         <div className={classes.buttons}>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          onClick={() => {
-            console.log('sending flag info')
-            sendFlagInfo();
-          }}>
-          Confirm
-        </Button>
-
-        <button onClick={() => {handleRemoveMarker(selected)}}>remove</button>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={() => {
+              console.log('sending flag info')
+              sendFlagInfo();
+            }}>
+            Confirm
+          </Button>
+          <button onClick={() => {handleRemoveMarker(selected)}}>remove</button>
         </div>
       </div>
     )

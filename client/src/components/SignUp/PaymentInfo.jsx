@@ -42,7 +42,7 @@ const useStyles = makeStyles({
   button: {
     height: 100,
     width: 500,
-    borderRadius: 40,
+    borderRadius: 50,
     boxShadow: '0 5px 10px 5px rgba(128,128,128, .3)',
     fontSize: 30,
     margin: 50,

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
   largeIcon: {
-    fontSize: '2em'
+    fontSize: '4em'
   },
   primaryCircle: {
     background: '#2565A0',
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     color: 'FFFFFF',
-    width: 250,
+    width: 500,
   },
   fullList: {
     width: 'auto',
