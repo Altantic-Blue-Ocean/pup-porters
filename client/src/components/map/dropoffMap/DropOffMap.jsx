@@ -6,22 +6,23 @@ import InfoWindowItem from './InfoWindowItem.jsx';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Slide } from '@material-ui/core';
-import Drawer from  '../../Drawer.jsx';
+import { FaPoop } from 'react-icons/fa';
 
 
 const useStyles = makeStyles({
-  outer: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  head: {
-    width: 700,
-    marginBottom: '10%',
-  },
-  instruction: {
-    fontSize: 75,
-    fontWeight: 300,
-  },
+  // container: {
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  button: {
+    height: 50,
+    width: 250,
+    borderRadius: 50,
+    boxShadow: '0 5px 10px 5px rgba(128,128,128, .3)',
+    fontSize: 15,
+  }
 });
 
 const containerStyle = {
@@ -39,43 +40,87 @@ const centerSample = [{
 
 const sampleCoords = [
   {
+    //gg park
     coordinates: {
-      lat: 37.795429,
-      lng: -122.393561
+      lat: 37.76941221629452,
+      lng: -122.46322601611328
     }
   },
   {
+    //buena vista park
     coordinates: {
-    lat: 37.759773,
-    lng: -122.427063
+      lat: 37.768611469310585,
+      lng: -122.4415111541748
     }
   },
   {
+    //alamo sqaure park
     coordinates: {
-    lat: 37.781372,
-    lng: -122.394241
+      lat: 37.776371218071695,
+      lng: -122.43482708930969
     }
   },
   {
+    //presidio
     coordinates: {
-    lat: 37.769722,
-    lng: -122.476944
+      lat: 37.79633638529349,
+      lng: -122.46389066029026
     }
   },
   {
+    //dolores park
     coordinates: {
-    lat: 37.769722,
-    lng: -122.476944
+      lat: 37.75979065676546,
+      lng: -122.42717742919922
     }
   },
-]
+  {
+    //lafayette park
+    coordinates: {
+      lat: 37.791650877460256,
+      lng: -122.42759585380554
+    }
+  },
+  {
+    //fort mason
+    coordinates: {
+      lat: 37.80465296925594,
+      lng: -122.43045885889566
+    }
+  },
+  {
+    //oracle park
+    coordinates: {
+      lat: 37.77809620209697,
+      lng: -122.38994855963792
+    }
+  },
+  {
+    //washington square park
+    coordinates: {
+      lat: 37.80078155186425,
+      lng: -122.41024732589722
+    }
+  },
+  {
+    //rincoln dog park
+    coordinates: {
+      lat: 37.786241459164756,
+      lng: -122.39007711410522
+    }
+  },
+  {
+    //lands end
+    coordinates: {
+      lat: 37.78235220909234,
+      lng: -122.50046147244002
+    }
+  },
+
+];
 
 function DropOffMap(props) {
   const classes = useStyles();
-
-  const {isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: config.token
-  });
 
   const [selected, setSelected] = useState({});
   const [markers, setMarkers] = useState([]);
@@ -97,21 +142,10 @@ function DropOffMap(props) {
   const renderMap = () => {
 
     return (
-      <React.Fragment>
-      <div>
-        <div className={classes.outer}>
-          <div className={classes.head}>
-            <Typography className={classes.instruction}>
-              Find Drop Off Locations</Typography>
-          </div>
-        </div>
+      <div className={classes.container}>
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={{
-            lat: 37.773972,
-            lng: -122.431297
-          }}
-          // center={props.center}
+          center={props.centerLocation}
           zoom={12}
         >
 
@@ -120,7 +154,12 @@ function DropOffMap(props) {
               key={i}
               position={{lat: marker.coordinates.lat, lng: marker.coordinates.lng}}
               onClick={() => onSelect(marker)}
+              icon={{
+                url: 'http://localhost:300/poopTrashCan.png',
+                scaledSize: new google.maps.Size(50, 50),
+              }}
               animation={window.google.maps.Animation.DROP}
+
             />
           ))};
 
@@ -139,18 +178,14 @@ function DropOffMap(props) {
           </InfoWindow>
         )}
         </GoogleMap>
-      </div>
-      </React.Fragment>
 
+      </div>
     )
   };
 
-  if (loadError) {
-    return <div>Error loading Map</div>
-  };
-
-  return isLoaded ? renderMap() : <div>noooo</div>
+  return props.googleApiLoaded ? renderMap() : <div>noooo</div>
 
 };
 
 export default DropOffMap;
+

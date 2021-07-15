@@ -66,7 +66,7 @@ const Welcome = () => {
       cvv: cvv,
       zip_code: zip
     };
-    console.log(isCaregiver);
+    // console.log(data);
     // axios.post('/signup', data)
     //   .then((res) => {
     //     console.log('successfully posted')
