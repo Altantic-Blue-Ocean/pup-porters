@@ -11,6 +11,7 @@ import {
   Button,
   Slide
 } from '@material-ui/core';
+import { Link, useRouter } from 'react-router-dom'
 
 import PaymentInfo from './PaymentInfo.jsx';
 import PersonalInfo from './PersonalInfo.jsx';
@@ -80,58 +81,58 @@ const DogType = (props) => {
             <TextField
               className={classes.input}
               label="Your Dog's Name"
-              inputProps={{style: {fontSize: 40}}}
-              InputLabelProps={{style: {fontSize: 40}}}
-              onChange={(e) => setDogName(e.target.value)}/>
+              inputProps={{ style: { fontSize: 40 } }}
+              InputLabelProps={{ style: { fontSize: 40 } }}
+              onChange={(e) => setDogName(e.target.value)} />
           </form>
           <FormControl className={classes.form} >
             <FormLabel className={classes.label}>Size of your dog</FormLabel>
-              <RadioGroup
-                value={dogType} onChange={handleChange}>
-                <FormControlLabel
-                  classes={{label: classes.checkBoxLabel}}
-                  label="Small (0-20lbs)"
-                  control={<Radio color="primary"/>}
-                  value="small"
-                  className={classes.radio}/>
-                <FormControlLabel
-                  classes={{label: classes.checkBoxLabel}}
-                  label="Medium (21-50lbs)"
-                  control={<Radio color="primary"/>}
-                  value="medium"
-                  className={classes.radio}/>
-                <FormControlLabel
-                  classes={{label: classes.checkBoxLabel}}
-                  label="Large (51-99lbs)"
-                  control={<Radio color="primary"/>}
-                  value="large"
-                  className={classes.radio}/>
-                <FormControlLabel
-                  classes={{label: classes.checkBoxLabel}}
-                  label="Extra Large (100+lbs)"
-                  control={<Radio color="primary"/>}
-                  value="xlarge"
-                  className={classes.radio}/>
-              </RadioGroup>
+            <RadioGroup
+              value={dogType} onChange={handleChange}>
+              <FormControlLabel
+                classes={{ label: classes.checkBoxLabel }}
+                label="Small (0-20lbs)"
+                control={<Radio color="primary" />}
+                value="small"
+                className={classes.radio} />
+              <FormControlLabel
+                classes={{ label: classes.checkBoxLabel }}
+                label="Medium (21-50lbs)"
+                control={<Radio color="primary" />}
+                value="medium"
+                className={classes.radio} />
+              <FormControlLabel
+                classes={{ label: classes.checkBoxLabel }}
+                label="Large (51-99lbs)"
+                control={<Radio color="primary" />}
+                value="large"
+                className={classes.radio} />
+              <FormControlLabel
+                classes={{ label: classes.checkBoxLabel }}
+                label="Extra Large (100+lbs)"
+                control={<Radio color="primary" />}
+                value="xlarge"
+                className={classes.radio} />
+            </RadioGroup>
           </FormControl>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-          onClick={() => {
-            setView('credit-card');
-            props.inputDogInfo(dogName, dogType);
-          }}>
-          Submit
-        </Button>
-        <Button
-          variant="contained"
-          className={classes.button}
-          onClick={() => setView('back')}>
-          Back
-        </Button>
-      </div>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={() => {
+              setView('credit-card');
+              props.inputDogInfo(dogName, dogType);
+            }}>
+            Submit
+          </Button>
+          <Button
+            variant="contained"
+            className={classes.button}
+            onClick={() => history.go(-1)}>
+            Back
+          </Button>
         </div>
+      </div>
     )
   } else if (view === 'credit-card') {
     return (
@@ -139,7 +140,7 @@ const DogType = (props) => {
         <div>
           <PaymentInfo
             sendUserInfo={props.sendUserInfo}
-            inputPaymentInfo={props.inputPaymentInfo}/>
+            inputPaymentInfo={props.inputPaymentInfo} />
         </div>
       </Slide>
     )
@@ -151,7 +152,7 @@ const DogType = (props) => {
             sendUserInfo={props.sendUserInfo}
             inputUserInfo={props.inputUserInfo}
             inputDogInfo={props.inputDogInfo}
-            inputPaymentInfo={props.inputPaymentInfo}/>
+            inputPaymentInfo={props.inputPaymentInfo} />
         </div>
       </Slide>
     )

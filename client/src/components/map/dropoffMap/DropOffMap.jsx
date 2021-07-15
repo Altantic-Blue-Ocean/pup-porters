@@ -6,6 +6,7 @@ import InfoWindowItem from './InfoWindowItem.jsx';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Slide } from '@material-ui/core';
+import Drawer from  '../../Drawer.jsx';
 
 
 const useStyles = makeStyles({
@@ -96,6 +97,7 @@ function DropOffMap(props) {
   const renderMap = () => {
 
     return (
+      <React.Fragment>
       <div>
         <div className={classes.outer}>
           <div className={classes.head}>
@@ -138,6 +140,8 @@ function DropOffMap(props) {
         )}
         </GoogleMap>
       </div>
+      </React.Fragment>
+
     )
   };
 

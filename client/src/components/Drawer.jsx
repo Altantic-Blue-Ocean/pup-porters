@@ -8,8 +8,10 @@ import {
   ListItem,
   ListItemText,
   SvgIcon,
-  SwipeableDrawer
+  SwipeableDrawer,
+  Typography
 } from '@material-ui/core';
+import { Link, useHistory } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/MenuOutlined';
 
 const useStyles = makeStyles((theme) => ({
@@ -65,13 +67,37 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      {/*
         {['User Profile', 'Pup Pile Map', 'Drop Off'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      {/*
+        {['User Profile', 'Pup Pile Map', 'Drop Off'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List> */}
+
+      <Typography component={Link} to="/userprofile">
+        User Profile
+      </Typography>
+      <Typography component={Link} to="/maingooglemap">
+        Pup Pile Map
+      </Typography>
+      <Typography component={Link} to="/dropoffmap">
+        Drop Off
+      </Typography>
+
       <Divider />
     </div>
   );
@@ -97,6 +123,4 @@ export default function SwipeableTemporaryDrawer() {
       ))}
     </div>
   );
-
-
 }

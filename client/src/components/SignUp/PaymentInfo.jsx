@@ -106,7 +106,7 @@ const PaymentInfo = (props) => {
           <Button
             variant="contained"
             className={classes.button}
-            onClick={() => setView('back')}>
+            onClick={()=>history.go(-1)}>
             Back
           </Button>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Slide, Typography } from '@material-ui/core';
+import { Link, useHistory } from 'react-router-dom'
 
 import PersonalInfo from './PersonalInfo.jsx';
 import Welcome from './Welcome.jsx';
@@ -32,60 +33,46 @@ const useStyles = makeStyles({
   }
 });
 
+
+
 const ChooseRole = (props) => {
   const classes = useStyles();
-  const [view, setView] = useState(false);
+  const history = useHistory();
 
-  if (!view) {
+  const handleClick = () => {
+    history.push('/personalinfo');
+  }
+
     return (
       <div className={classes.outer}>
         <div className={classes.container}>
           <Typography className={classes.title}>
             Are you a caregiver or a remover?</Typography>
           <Button
+          onClick={handleClick}
             variant="contained"
             color="primary"
             className={classes.button}
-            onClick={() => setView('caregiver')}>
+            >
             Caregiver
           </Button>
           <Button
+          onClick={handleClick}
             variant="contained"
             color="primary"
             className={classes.button}
-            onClick={() => setView('remover')}>
+            >
             Remover
           </Button>
           <Button
             variant="contained"
             className={classes.button}
-            onClick={() => setView('welcome')}>
+            onClick={()=>history.go(-1)}>
             Back
           </Button>
         </div>
       </div>
     )
-  } else if (view === 'caregiver' || view === 'remover') {
-    return (
-      <Slide direction="up" in={true}>
-        <div>
-          <PersonalInfo
-            role={view}
-            sendUserInfo={props.sendUserInfo}
-            inputUserInfo={props.inputUserInfo}
-            inputDogInfo={props.inputDogInfo}
-            inputPaymentInfo={props.inputPaymentInfo}/>
-        </div>
-      </Slide>
-    )
-  } else if (view === 'welcome') {
-    return (
-      <Slide direction="down" in={true}>
-        <div>
-          <Welcome/>
-        </div>
-      </Slide>)
   }
-}
 
 export default ChooseRole;

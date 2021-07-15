@@ -4,6 +4,8 @@ import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
+import Drawer from  '../Drawer.jsx';
+import { Link, useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles({
   container: {
@@ -70,7 +72,10 @@ function UpdatePayment (props) {
   }
 
   return (
+    <React.Fragment>
+      <Drawer />
     <div className={styles.container}>
+
       <Typography variant='h4' className={styles.title}>Payment Information</Typography>
       <p className={styles.card}>
         <TextField placeholder='Credit Card' fullWidth={true} value={card} onChange={(event) => setCard(event.target.value)}/>
@@ -85,8 +90,11 @@ function UpdatePayment (props) {
       <Fab variant='extended' color='primary' onClick={() => update(paymentInformation)} className={styles.floatingButton}>
         Update Payment
       </Fab>
-      <Button onClick={props.close}>Back</Button>
+      <Button onClick={()=>history.go(-1)}>Back</Button>
     </div>
+
+    </React.Fragment>
+
   )
 }
 

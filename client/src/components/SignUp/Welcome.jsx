@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Slide } from '@material-ui/core';
 import axios from 'axios';
-
 import Drawer from '../Drawer.jsx';
 import ChooseRole from './ChooseRole.jsx';
 import Login from './Login.jsx';
@@ -59,7 +58,6 @@ const Welcome = () => {
     const data = {
       is_caregiver: true,
       email: email,
-      pw: password,
       dog_name: dogName,
       dog_type: dogType,
       card_num: card,
