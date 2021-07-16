@@ -9,18 +9,6 @@ import { Typography, Button, Slide, Modal } from '@material-ui/core';
 import Confirmation from './Confirmation.jsx';
 
 const useStyles = makeStyles({
-  outer: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  head: {
-    width: 700,
-    marginBottom: '10%',
-  },
-  instruction: {
-    fontSize: 75,
-    fontWeight: 300,
-  },
   button: {
     height: 100,
     width: 500,
@@ -120,12 +108,6 @@ const sendFlagInfo = () => {
   const renderMap = () => {
     return (
       <div>
-        <div className={classes.outer}>
-          <div className={classes.head}>
-            <Typography className={classes.instruction}>
-            Place pup porter flag within 2” of pup pile</Typography>
-          </div>
-        </div>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={props.centerLocation}
