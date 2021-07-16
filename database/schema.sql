@@ -53,20 +53,7 @@ INSERT INTO dropoffs (place, coords) VALUES ('Lands End', Point(37.7823522090923
 -- SELECT ST_Y(coords) as lng FROM dropoffs WHERE id=1;
 
 -- INSERT INTO users VALUES ('1', 'chrispak90@gmail.com', true, 'medium', 'Fiddo', '1234567890123456', '05', '25', '123', '00000');
-
--- INSERT INTO users VALUES ('2', 'katj@gmail.com', true, 'medium', 'FiddoJr', '1234567890123456', '06', '26', '123', '00001');
+-- INSERT INTO users VALUES ('2', 'katj@gmail.com', true, 'small', 'FiddoJr', '1234567890123456', '06', '26', '123', '00001');
 
 -- INSERT INTO flags (caregiver_id, coords, price) VALUES ('1', Point(37.75718, -122.48653), 5.12);
-
 -- INSERT INTO flags (caregiver_id, coords, price) VALUES ('2', Point(37.78235, -123.5004), 3.00);
-
--- SELECT
---   flags.id as flag_id,
---   caregiver_id,
---   (SELECT dog_type WHERE flags.caregiver_id = users.id) as dog_type,
---   (SELECT ST_X(coords)) as lat,
---   (SELECT ST_Y(coords)) as lng,
---   price
--- FROM users INNER JOIN flags
--- WHERE pile_status = 'available';
-

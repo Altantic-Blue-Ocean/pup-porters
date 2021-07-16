@@ -43,7 +43,7 @@ const MainGoogleMap = () => {
 
   const [googleApiLoaded, setGoogleApiLoaded] = useState(false);
   const [centerLocation, setCenterLocation] = useState({});
-  const { currentUser, logout } = useAuth()
+  const { currentUser } = useAuth();
 
   useEffect(() => {
 
@@ -74,7 +74,7 @@ const MainGoogleMap = () => {
   //   }
   // }
 
-  const role = JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com' ? 'caregiver': 'remover';
+  // const role = JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com' ? 'caregiver': 'remover';
   // console.log(role);
   return (
     <div className="App" style={{ width: '200%', marginLeft: 50}}>
@@ -86,14 +86,25 @@ const MainGoogleMap = () => {
           getCenterLocation={getCenterLocation}
         />
       </div>
+      { currentUser.email === 'yukiyamamoto710@gmail.com' ?
+      <CaregiverMap
+          googleApiLoaded={googleApiLoaded}
+          centerLocation={centerLocation}
+        /> :
+        <RemoverMap
+          googleApiLoaded={googleApiLoaded}
+          centerLocation={centerLocation}
+        />}
+      {/* {userInfo.isCaregiver ?
         <CaregiverMap
           googleApiLoaded={googleApiLoaded}
           centerLocation={centerLocation}
-        />
-        {/* <RemoverMap
+        /> :
+        <RemoverMap
           googleApiLoaded={googleApiLoaded}
           centerLocation={centerLocation}
-        /> */}
+        />
+      } */}
       {/* <DropOffMap
         googleApiLoaded={googleApiLoaded}
         centerLocation={centerLocation}

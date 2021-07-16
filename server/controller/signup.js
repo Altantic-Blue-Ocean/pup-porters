@@ -3,7 +3,6 @@ const model = require('../model/signup.js');
 const router = express.Router();
 
 router.post('/', (req, res) => {
-  console.log(req.body);
   model.addUser(req.body, (err, data) => {
     if (err) {
       console.log(err);

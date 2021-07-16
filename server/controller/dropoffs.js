@@ -5,7 +5,6 @@ const router = express.Router();
 router.get('/', (req, res) => {
   model.getDropoffs((err, data) => {
     if (err) {
-      console.log(err);
       res.status(500).send(err);
     } else {
       res.status(200).send(data);

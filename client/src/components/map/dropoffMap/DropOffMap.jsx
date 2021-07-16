@@ -8,12 +8,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Slide } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  // container: {
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
+  outer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  head: {
+    width: 700,
+    marginBottom: '10%',
+  },
+  instruction: {
+    fontSize: 75,
+    fontWeight: 300,
+  },
   button: {
     height: 50,
     width: 250,
@@ -136,11 +142,16 @@ function DropOffMap(props) {
   setOpenWindow(true);
 };
 
-
   const renderMap = () => {
 
     return (
-      <div className={classes.container}>
+      <div>
+        <div className={classes.outer}>
+          <div className={classes.head}>
+            <Typography className={classes.instruction}>
+              Find Drop Off Locations</Typography>
+          </div>
+        </div>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={props.centerLocation}

@@ -149,4 +149,5 @@ async function handleSubmit() {
     );
   }
 
+
 export default PersonalInfo;
