@@ -15,6 +15,7 @@ const useStyles = makeStyles({
   head: {
     width: 700,
     marginBottom: '10%',
+    textAlign: 'center',
   },
   instruction: {
     fontSize: 75,
@@ -60,35 +61,35 @@ const sampleCoords = [
       lat: 37.795429,
       lng: -122.393561
     },
-    icon: {url: 'http://localhost:300/poop.png'}
+    icon: {url: 'http://localhost:3000/poop.png'}
   },
   {
     coordinates: {
     lat: 37.759773,
     lng: -122.427063
     },
-    icon: {url: 'http://localhost:300/poop.png'}
+    icon: {url: 'http://localhost:3000/poop.png'}
   },
   {
     coordinates: {
     lat: 37.781372,
     lng: -122.394241
     },
-    icon: {url: 'http://localhost:300/poop.png'}
+    icon: {url: 'http://localhost:3000/poop.png'}
   },
   {
     coordinates: {
     lat: 37.769722,
     lng: -122.476944
     },
-    icon: {url: 'http://localhost:300/poop.png'}
+    icon: {url: 'http://localhost:3000/poop.png'}
   },
   {
     coordinates: {
     lat: 37.769722,
     lng: -122.476944
     },
-    icon: {url: 'http://localhost:300/poop.png'}
+    icon: {url: 'http://localhost:3000/poop.png'}
   },
 ];
 
@@ -113,7 +114,7 @@ function RemoverMap(props) {
   markers.filter((marker) => {
     if (marker.coordinates.lat === item.coordinates.lat) {
       item.icon = {
-        url: 'http://localhost:300/poopblue.png',
+        url: 'http://localhost:3000/poopblue.png',
         scaledSize: new google.maps.Size(50, 50),
       }
     }
@@ -157,7 +158,7 @@ const sendTransaction = () => {
         <div className={classes.outer}>
           <div className={classes.head}>
             <Typography className={classes.instruction}>
-              Select Pup Pile TM</Typography>
+              Select Pup Pile &trade;</Typography>
           </div>
         </div>
         <GoogleMap

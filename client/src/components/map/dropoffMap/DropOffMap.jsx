@@ -164,7 +164,7 @@ function DropOffMap(props) {
               position={{lat: marker.coordinates.lat, lng: marker.coordinates.lng}}
               onClick={() => onSelect(marker)}
               icon={{
-                url: 'http://localhost:300/poopTrashCan.png',
+                url: 'http://localhost:3000/poopTrashCan.png',
                 scaledSize: new google.maps.Size(50, 50),
               }}
               animation={window.google.maps.Animation.DROP}

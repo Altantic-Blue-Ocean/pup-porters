@@ -9,11 +9,8 @@ import UpdatePayment from './updatePayment.jsx';
 import Drawer from  '../Drawer.jsx';
 import {useAuth} from '../../contexts/AuthContext.js';
 
+
 const useStyles = makeStyles({
-  hamburger: {
-    alignSelf: 'flex-start',
-    marginTop: '5%'
-  },
   userProfile: {
     height: '100%',
     width: '100%',
@@ -26,7 +23,7 @@ const useStyles = makeStyles({
   },
   sectionTitle: {
     marginTop: '7%',
-    fontSize: '500%'
+    fontSize: '400%'
   },
   profileSection: {
     display: 'flex',
@@ -42,7 +39,7 @@ const useStyles = makeStyles({
     height: 100,
     width: 400,
     borderRadius: 50
-  }
+  },
 })
 
 function UserProfile (props) {
@@ -53,25 +50,25 @@ function UserProfile (props) {
   const [dogSize, setDogSize] = useState('');
   const [dogName, setDogName] = useState('');
   const styles = useStyles();
-  const user = useAuth();
+  const {currentUser, userInfo} = useAuth();
 
   useEffect(() => {
-    console.log('user', user.currentUser)
-    const option = {
-      method: 'get',
-      url: `/user`,
-      data: {
-        userName: userName
-      },
-      params: `${user.currentUser.uid}`
-    }
-    axios(option)
-      .then(response => {
-        setUserEmail(response.data.email);
-        setCardInfo(helpers.formatCard(response.data.card_num));
-        setDogSize(response.data.dog_type);
-        setDogName(response.data.dog_name);
-      })
+    console.log('user', userInfo)
+    // const option = {
+    //   method: 'get',
+    //   url: `/user`,
+    //   data: {
+    //     userName: userName
+    //   },
+    //   params: `${currentUser.uid}`
+    // }
+    // axios(option)
+    //   .then(response => {
+    //     setUserEmail(response.data.email);
+    //     setCardInfo(helpers.formatCard(response.data.card_num));
+    //     setDogSize(response.data.dog_type);
+    //     setDogName(response.data.dog_name);
+    //   })
   }, [])
 
   const close = () => {
@@ -99,32 +96,31 @@ function UserProfile (props) {
     <div className={styles.userProfile}>
       <Typography variant='h4' className={styles.sectionTitle}>Personal</Typography>
       <p className={styles.profileSection}>
-        <Typography variant='subitle1'>{userName}User Name</Typography>
-        <Typography variant='subitle1'>{userEmail}Email</Typography>
+        <Typography>User Email</Typography>
+        <Typography>{currentUser.email}</Typography>
       </p>
       <p className={styles.profileSection}>
-        <Typography variant='subitle1'>Dog Name</Typography>
-        <Typography variant='subitle1'>{dogName}Fiddo</Typography>
+        <Typography variant='body1'>Dog Name</Typography>
+        <Typography variant='body1'>{userInfo[0].dog_name}</Typography>
       </p>
       <p className={styles.profileSection}>
-        <Typography variant='subitle1'>Dog Size</Typography>
-        <Typography variant='subitle1'>{dogSize}Medium</Typography>
+        <Typography variant='body1'>Dog Size</Typography>
+        <Typography variant='body1'>{userInfo[0].dog_type}</Typography>
       </p>
       <Typography variant='h4' className={styles.sectionTitle}>Billing</Typography>
       <p className={styles.profileSection}>
-        <Typography variant='subitle1'>Card</Typography>
-        <Typography variant='subitle1'>{cardInfo}xxxx-xxxx-xxxx-1234</Typography>
+        <Typography variant='body1'>Card</Typography>
+        <Typography variant='body1'>{cardInfo}xxxx-xxxx-xxxx-1234</Typography>
       </p>
       <Fab variant='extended' color='primary' aria-label='update payment' onClick={() => setUpdate(true)} className={styles.updateButton}>
         Update Payment
       </Fab>
       <Modal
-          open={update}
-        >
-          <UpdatePayment close={close} update={updatePayment} userID={props.userID}/>
-        </Modal>
+        open={update}
+      >
+        <UpdatePayment close={close} update={updatePayment} userID={props.userID}/>
+      </Modal>
     </div>
-
     </React.Fragment>
 
   )

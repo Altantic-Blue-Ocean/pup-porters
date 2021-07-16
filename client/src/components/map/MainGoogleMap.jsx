@@ -77,7 +77,7 @@ const MainGoogleMap = (props) => {
           googleApiLoaded={googleApiLoaded}
           centerLocation={centerLocation}
         /> :
-        userInfo.is_caregiver ?
+        userInfo[0].is_caregiver ?
         <CaregiverMap
             googleApiLoaded={googleApiLoaded}
             centerLocation={centerLocation}
