@@ -12,7 +12,7 @@ import UserProfile from './Profile_UpdatePayment/userProfile.jsx';
 import DogType from './signup/DogType.jsx';
 import Welcome from './signup/Welcome.jsx';
 import ChooseRole from './signup/ChooseRole.jsx';
-import Dashboard from './Dashboard.jsx'
+
 import Homepage from './Homepage.jsx'
 import Login from './signup/Login.jsx';
 import PaymentInfo from './signup/PaymentInfo.jsx';

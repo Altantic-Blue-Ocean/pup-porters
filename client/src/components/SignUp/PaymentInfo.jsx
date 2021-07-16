@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, TextField, Button, Slide } from '@material-ui/core';
+import { Link, useHistory } from "react-router-dom";
 
 import DogType from './DogType.jsx';
 
@@ -94,15 +95,14 @@ const PaymentInfo = (props) => {
               InputLabelProps={{style: {fontSize: 40}}}/>
             </div>
           </form>
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.button}
-            onClick={() => {
-              props.inputPaymentInfo(card, expMonth, expYear, cvv, zip);
-            }}>
-            Submit
-          </Button>
+          <Link to="maingooglemap">
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}>
+              Submit
+            </Button>
+          </Link>
           <Button
             variant="contained"
             className={classes.button}

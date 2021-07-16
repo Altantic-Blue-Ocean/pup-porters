@@ -64,7 +64,6 @@ const Login = (props) => {
     } catch {
       setError("Failed to log in")
     }
-
     setLoading(false)
   }
   // next page needs to go to caregiver or remover map based on logged in user's role

@@ -75,8 +75,6 @@ const PersonalInfo = (props) => {
 async function handleSubmit() {
       console.log('clicked')
 
-
-
       if (passwordRef.current.value !== passwordConfirmRef.current.value) {
         return setError("Passwords do not match")
       }
@@ -84,7 +82,7 @@ async function handleSubmit() {
         setError("")
         setLoading(true)
         await signup(emailRef.current.value, passwordRef.current.value)
-        history.push("/")
+        history.push("/dogtype")
       } catch {
         setError("Failed to create an account")
       }
@@ -150,6 +148,5 @@ async function handleSubmit() {
       </div>
     );
   }
-
 
 export default PersonalInfo;

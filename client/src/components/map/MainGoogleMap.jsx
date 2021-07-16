@@ -8,6 +8,7 @@ import config from '../../../../config.js';
 import axios from 'axios';
 import Drawer from '../Drawer.jsx'
 import { makeStyles } from '@material-ui/core/styles';
+import { useAuth } from "../../contexts/AuthContext"
 
 const useStyles = makeStyles({
   searchBar: {
@@ -42,10 +43,15 @@ const MainGoogleMap = () => {
 
   const [googleApiLoaded, setGoogleApiLoaded] = useState(false);
   const [centerLocation, setCenterLocation] = useState({});
+  // const [role, setRole] = useState()
+  const { currentUser, logout } = useAuth()
+  // const role = JSON.stringify(currentUser.email)
 
   useEffect(() => {
+
     loadScript(`https://maps.googleapis.com/maps/api/js?key=${config.token}&libraries=places`, () => {
       setGoogleApiLoaded(true);
+
     });
     setCenterLocation({lat: 37.773972, lng: -122.431297});
   }, []);
@@ -61,7 +67,17 @@ const MainGoogleMap = () => {
     }
   };
 
+  // const hardcodedRole = () => {
+  //   console.log(currentUser.email)
+  //   if (JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com') {
+  //     setRole('caregiver')
+  //   } else {
+  //     setRole('remover')
+  //   }
+  // }
 
+  // const role = JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com' ? 'caregiver': 'remover';
+  // console.log(role);
   return (
     <div className="App" style={{ width: '200%', marginLeft: 50}}>
       <Drawer />
@@ -72,14 +88,15 @@ const MainGoogleMap = () => {
           getCenterLocation={getCenterLocation}
         />
       </div>
-      <CaregiverMap
-        googleApiLoaded={googleApiLoaded}
-        centerLocation={centerLocation}
-      />
-      {/* <RemoverMap
-        googleApiLoaded={googleApiLoaded}
-        centerLocation={centerLocation}
-      /> */}
+      {role === 'caregiver' ?
+        (<CaregiverMap
+          googleApiLoaded={googleApiLoaded}
+          centerLocation={centerLocation}
+        />) :
+        (<RemoverMap
+          googleApiLoaded={googleApiLoaded}
+          centerLocation={centerLocation}
+        />)}
       {/* <DropOffMap
         googleApiLoaded={googleApiLoaded}
         centerLocation={centerLocation}
@@ -87,6 +104,8 @@ const MainGoogleMap = () => {
     </div>
   );
 };
+
+
 
 export default MainGoogleMap;
 
