@@ -25,7 +25,6 @@ export function AuthProvider({ children }) {
     return auth.signOut()
   }
 
-
   function getUserInfo() {
     console.log(JSON.stringify(currentUser.uid))
     axios.get('/user', {
@@ -40,7 +39,6 @@ export function AuthProvider({ children }) {
       console.log(error)
     })
   }
-
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {

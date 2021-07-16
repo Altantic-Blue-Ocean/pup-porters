@@ -63,6 +63,7 @@ const MainGoogleMap = (props) => {
       console.log(error);
     }
   };
+
   return (
     <div className="App" style={{ width: '200%', marginLeft: 50 }}>
       <Drawer />

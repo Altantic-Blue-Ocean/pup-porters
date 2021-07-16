@@ -13,7 +13,5 @@ router.get('/:uid', (req, res) => {
     }
   })
 });
-// e.g. localhost:3000/user/1
-
 
 module.exports = router;
