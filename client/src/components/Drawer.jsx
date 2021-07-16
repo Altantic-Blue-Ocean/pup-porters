@@ -16,7 +16,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
 import MenuIcon from '@material-ui/icons/MenuOutlined';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   '@global': {
     ul: {
       margin: 0,
@@ -24,16 +24,15 @@ const useStyles = makeStyles((theme) => ({
       listStyle: 'none',
     },
   },
-  appBar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
+  // appBar: {
+  //   borderBottom: `1px solid ${theme.palette.divider}`,
+  // },
   largeIcon: {
-    fontSize: '3em'
+    fontSize: '100px'
   },
   primaryCircle: {
     background: '#2565A0',
     borderRadius: 20
-
   },
   list: {
     color: 'FFFFFF',
@@ -64,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     top: 100,
     left: 50,
   }
-}));
+});
 
 export default function SwipeableTemporaryDrawer() {
   const classes = useStyles();
@@ -108,9 +107,10 @@ export default function SwipeableTemporaryDrawer() {
       <Link to="/maingooglemap" className={classes.link}>
         <Typography className={classes.nav}>Pup Pile Map</Typography>
       </Link>
-      <Link to={{pathname: "/maingooglemap", state: {dropoff: true}}} className={classes.link}>
-        <Typography className={classes.nav}>Drop Off</Typography>
-      </Link>
+      {userInfo[0].is_caregiver ?
+       null : <Link to={{pathname: "/maingooglemap", state: {dropoff: true}}} className={classes.link}>
+       <Typography className={classes.nav}>Drop Off</Typography>
+     </Link> }
       <Button onClick={handleLogout} className={classes.logout}>
         <Typography className={classes.nav}>Logout</Typography>
       </Button>
