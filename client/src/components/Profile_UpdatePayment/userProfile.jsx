@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Fab from '@material-ui/core/Fab';
 import Modal from '@material-ui/core/Modal';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
+import axios from 'axios';
 import helpers from './helpers.js';
 import UpdatePayment from './updatePayment.jsx';
 import Drawer from  '../Drawer.jsx';
+import {useAuth} from '../../contexts/AuthContext.js';
 
 const useStyles = makeStyles({
   hamburger: {
@@ -51,21 +53,25 @@ function UserProfile (props) {
   const [dogSize, setDogSize] = useState('');
   const [dogName, setDogName] = useState('');
   const styles = useStyles();
+  const user = useAuth();
 
   useEffect(() => {
+    console.log('user', user.currentUser)
     const option = {
       method: 'get',
+      url: `http://127.0.0.1:3000/user`,
       data: {
         userName: userName
-      }
+      },
+      params: `${user.currentUser.uid}`
     }
-    // fetch('http://127.0.0.1:3000', option)
-    //   .then(response => {
-    //     setUserEmail(response.data.email);
-    //     setCardInfo(helpers.formatCard(response.data.card));
-    //     setDogSize(response.data.dogSize);
-    //     setDogNmae(response.data.dogName);
-    //   })
+    axios(option)
+      .then(response => {
+        setUserEmail(response.data.email);
+        setCardInfo(helpers.formatCard(response.data.card_num));
+        setDogSize(response.data.dog_type);
+        setDogName(response.data.dog_name);
+      })
   }, [])
 
   const close = () => {
@@ -78,7 +84,7 @@ function UserProfile (props) {
       'method': 'post',
       'data': newPayment
     }
-  //  fetch('http://127.0.0.1:3000', option)
+  //  axios('http://127.0.0.1:3000', option)
   //     .then(() => {
   //       console.log('sent')
   //     })

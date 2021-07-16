@@ -31,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
   },
   primaryCircle: {
     background: '#2565A0',
-
+    borderRadius: 0,
+    marginTop: '1em',
+    marginLeft: '0.5em',
   },
   list: {
     color: 'FFFFFF',
