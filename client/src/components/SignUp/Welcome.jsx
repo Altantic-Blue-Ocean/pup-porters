@@ -145,7 +145,7 @@ const Welcome = () => {
       <Slide direction="up" in={true}>
         <div>
           <Drawer/>
-          <MainGoogleMap/>
+          <MainGoogleMap role={view}/>
         </div>
       </Slide>)
   } else if (view === 'remover') {

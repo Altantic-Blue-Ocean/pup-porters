@@ -15,6 +15,7 @@ const useStyles = makeStyles({
   head: {
     width: 700,
     marginBottom: '10%',
+    textAlign: 'center',
   },
   instruction: {
     fontSize: 75,
@@ -204,7 +205,7 @@ const sendTransaction = () => {
         <div className={classes.outer}>
           <div className={classes.head}>
             <Typography className={classes.instruction}>
-              Select Pup Pile TM</Typography>
+              Select Pup Pile &trade;</Typography>
           </div>
         </div>
         <GoogleMap
