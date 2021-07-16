@@ -114,6 +114,7 @@ export default function SwipeableTemporaryDrawer() {
       </Typography>
       <Typography onClick={handleLogout}>
         Logout
+        {JSON.stringify(currentUser.uid)}
       </Typography>
 
 

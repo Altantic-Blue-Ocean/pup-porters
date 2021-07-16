@@ -60,7 +60,7 @@ const Login = (props) => {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      history.push("/maingooglemap")
     } catch {
       setError("Failed to log in")
     }

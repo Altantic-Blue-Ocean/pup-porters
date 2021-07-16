@@ -6,6 +6,7 @@ import DropOffMap from './dropoffMap/DropOffMap.jsx';
 import SearchBar from './SearchBar.jsx';
 import config from '../../../../config.js';
 import axios from 'axios';
+import Drawer from '../Drawer.jsx'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -63,6 +64,7 @@ const MainGoogleMap = () => {
 
   return (
     <div className="App" style={{ width: '200%', marginLeft: 50}}>
+      <Drawer />
       <br /><br />
       <div className={styles.searchBar}>
         <SearchBar
