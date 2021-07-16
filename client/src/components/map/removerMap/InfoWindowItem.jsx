@@ -11,10 +11,12 @@ const useStyles = makeStyles({
 function InfoWindowItem({coordinates}) {
   const classes = useStyles();
   return (
+
     <div className={classes.info}>
       <Typography color="primary">POOP HERE</Typography>
       <Typography>Price: $5.00</Typography>
     </div>
+
   )
 };
 

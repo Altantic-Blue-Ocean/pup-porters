@@ -13,3 +13,16 @@ connection.connect(err => {
 });
 
 module.exports = connection;
+
+module.exports.queryDb = function(queryString) {
+
+  return new Promise((resolve, reject) => {
+    connection.query(queryString, (err, results) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    });
+  });
+};

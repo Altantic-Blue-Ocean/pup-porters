@@ -6,6 +6,8 @@ import InfoWindowItem from './InfoWindowItem.jsx';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Slide } from '@material-ui/core';
+import { FaPoop } from 'react-icons/fa';
+
 
 const useStyles = makeStyles({
   outer: {
@@ -120,7 +122,6 @@ const sampleCoords = [
       lng: -122.50046147244002
     }
   },
-
 ];
 
 function DropOffMap(props) {
@@ -131,9 +132,25 @@ function DropOffMap(props) {
   const [openWindow, setOpenWindow] = useState(false);
   const [isClaimed, setStatus] = useState(false);
 
+  const getDropOffs = () => {
+    const option = {
+      method: 'get',
+      url: 'http://localhost:3000/dropoffs'
+    }
+
+    axios(option)
+      .then(response => {
+        setMarkers(response.data)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
 
   useEffect(() => {
-    setMarkers(sampleCoords);
+    // setMarkers(sampleCoords);
+    getDropOffs();
   }, []);
 
 
@@ -161,7 +178,7 @@ function DropOffMap(props) {
           {markers.map((marker, i) => (
             <Marker
               key={i}
-              position={{lat: marker.coordinates.lat, lng: marker.coordinates.lng}}
+              position={{lat: marker.coords.x, lng: marker.coords.y}}
               onClick={() => onSelect(marker)}
               icon={{
                 url: 'http://localhost:3000/poopTrashCan.png',
@@ -175,13 +192,13 @@ function DropOffMap(props) {
         {openWindow &&
         (
           <InfoWindow
-            position={selected.coordinates}
+            position={selected.coords}
             clickable={true}
             onCloseClick={() => setOpenWindow(false)}
           >
             <>
             <InfoWindowItem
-              coordinates={selected.coordinates}
+              coordinates={selected.coords}
             />
             </>
           </InfoWindow>
@@ -196,4 +213,3 @@ function DropOffMap(props) {
 };
 
 export default DropOffMap;
-

@@ -6,7 +6,7 @@ function InfoWindowItem({coordinates}) {
     <>
       <b>hi</b>
       <div>POOP DROP OFF HERE</div>
-      <div>lat: {coordinates.lat}, lng: {coordinates.lng}</div>
+      <div>lat: {coordinates.y}, lng: {coordinates.x}</div>
     </>
   )
 };

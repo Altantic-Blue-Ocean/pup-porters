@@ -20,15 +20,29 @@ CREATE TABLE users (
   zip_code CHAR(5) NOT NULL
 );
 
-CREATE TABLE flags (
+-- CREATE TABLE flags (
+--   id INT PRIMARY KEY AUTO_INCREMENT,
+--   caregiver_id VARCHAR(255) NOT NULL,
+--   remover_id VARCHAR(255),
+--   coords POINT NOT NULL,
+--   price DECIMAL(5,2) NOT NULL,
+--   pile_status ENUM('available', 'claimed', 'dropped') NOT NULL DEFAULT 'available',
+--   FOREIGN KEY (caregiver_id) REFERENCES users(id),
+--   FOREIGN KEY (remover_id) REFERENCES users(id)
+-- );
+
+CREATE TABLE available_piles (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  caregiver_id VARCHAR(255) NOT NULL,
-  remover_id VARCHAR(255),
   coords POINT NOT NULL,
-  price DECIMAL(5,2) NOT NULL,
-  pile_status ENUM('available', 'claimed', 'dropped') NOT NULL DEFAULT 'available',
-  FOREIGN KEY (caregiver_id) REFERENCES users(id),
-  FOREIGN KEY (remover_id) REFERENCES users(id)
+  caregiver_user_id VARCHAR(255) NOT NULL
+  -- FOREIGN KEY (caregiv er_user_id) REFERENCES users(id)
+);
+
+CREATE TABLE claimed_piles (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  coords POINT NOT NULL,
+  remover_user_id VARCHAR(255) NOT NULL
+  -- FOREIGN KEY (remover_user_id) REFERENCES users(id)
 );
 
 CREATE TABLE dropoffs (
@@ -54,6 +68,7 @@ INSERT INTO dropoffs (place, coords) VALUES ('Lands End', Point(37.7823522090923
 
 -- INSERT INTO users VALUES ('1', 'chrispak90@gmail.com', true, 'medium', 'Fiddo', '1234567890123456', '05', '25', '123', '00000');
 -- INSERT INTO users VALUES ('2', 'katj@gmail.com', true, 'small', 'FiddoJr', '1234567890123456', '06', '26', '123', '00001');
+
 
 -- INSERT INTO flags (caregiver_id, coords, price) VALUES ('1', Point(37.75718, -122.48653), 5.12);
 -- INSERT INTO flags (caregiver_id, coords, price) VALUES ('2', Point(37.78235, -123.5004), 3.00);
