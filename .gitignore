@@ -1,5 +1,6 @@
 node_modules/
 package-lock.json
+database/config.js
 bundle.js
 .env.local
 config.js
