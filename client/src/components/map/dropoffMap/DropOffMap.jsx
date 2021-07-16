@@ -176,7 +176,6 @@ function DropOffMap(props) {
           </InfoWindow>
         )}
         </GoogleMap>
-
       </div>
     )
   };

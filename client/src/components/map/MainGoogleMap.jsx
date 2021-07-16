@@ -43,9 +43,7 @@ const MainGoogleMap = () => {
 
   const [googleApiLoaded, setGoogleApiLoaded] = useState(false);
   const [centerLocation, setCenterLocation] = useState({});
-  // const [role, setRole] = useState()
-  const { currentUser, logout } = useAuth();
-  // const role = JSON.stringify(currentUser.email)
+  const { currentUser, logout } = useAuth()
 
   useEffect(() => {
 
@@ -76,7 +74,7 @@ const MainGoogleMap = () => {
   //   }
   // }
 
-  // const role = JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com' ? 'caregiver': 'remover';
+  const role = JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com' ? 'caregiver': 'remover';
   // console.log(role);
   return (
     <div className="App" style={{ width: '200%', marginLeft: 50}}>
@@ -88,15 +86,14 @@ const MainGoogleMap = () => {
           getCenterLocation={getCenterLocation}
         />
       </div>
-      {/* {currentUser.email === 'dontbreak@gmail.com' ?
-        (<CaregiverMap
+        <CaregiverMap
           googleApiLoaded={googleApiLoaded}
           centerLocation={centerLocation}
-        />) :
-        (<RemoverMap
+        />
+        {/* <RemoverMap
           googleApiLoaded={googleApiLoaded}
           centerLocation={centerLocation}
-        />)} */}
+        /> */}
       {/* <DropOffMap
         googleApiLoaded={googleApiLoaded}
         centerLocation={centerLocation}
@@ -104,8 +101,6 @@ const MainGoogleMap = () => {
     </div>
   );
 };
-
-
 
 export default MainGoogleMap;
 

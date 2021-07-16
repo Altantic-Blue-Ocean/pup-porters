@@ -5,7 +5,8 @@ import { GoogleMap, ScriptLoaded, useLoadScript, Marker, InfoWindow, Autocomplet
 import InfoWindowItem from './InfoWindowItem.jsx';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Button, Slide } from '@material-ui/core';
+import { Typography, Button, Slide, Modal } from '@material-ui/core';
+import Confirmation from './Confirmation.jsx';
 
 const useStyles = makeStyles({
   button: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
     borderRadius: 50,
     boxShadow: '0 5px 10px 5px rgba(128,128,128, .3)',
     fontSize: 30,
+    marginBottom: 50,
   },
   buttons: {
     margin: 50,
@@ -22,6 +24,11 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  hello: {
+    position: 'absolute',
+    width: 300,
+    backgroundColor: 'white',
   }
 });
 
@@ -40,7 +47,7 @@ function CaregiverMap(props) {
   const [openWindow, setOpenWindow] = useState(false);
   const [iconImage, setIconImage] = useState('');
   const [iconAnimation, setIconAnimation] = useState(null);
-
+  const [open, setOpen] = useState(false);
 
   // useEffect(() => {
   //   let image = 'http://localhost:300/poop.png';
@@ -70,6 +77,13 @@ function CaregiverMap(props) {
   setOpenWindow(true);
 
 };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
 const handleRemoveMarker = (coords) => {
   let newList = markers.filter((mark) => {
@@ -92,19 +106,14 @@ const sendFlagInfo = () => {
 };
 
   const renderMap = () => {
-
     return (
-
       <div>
-
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={props.centerLocation}
           zoom={14}
           onClick={onMapClick}
         >
-
-
           {markers.map((marker, i) => (
             <Marker
               key={i}
@@ -130,8 +139,6 @@ const sendFlagInfo = () => {
           </InfoWindow>
         )}
         </GoogleMap>
-
-
         <div className={classes.buttons}>
         <Button
           variant="contained"
@@ -139,12 +146,15 @@ const sendFlagInfo = () => {
           className={classes.button}
           onClick={() => {
             console.log('sending flag info')
-            sendFlagInfo();
+            // sendFlagInfo();
+            handleOpen();
           }}>
           Confirm
         </Button>
-
         <button onClick={() => {handleRemoveMarker(selected)}}>remove</button>
+        <Modal open={open} onClose={handleClose}>
+          <Confirmation/>
+        </Modal>
         </div>
       </div>
     )
