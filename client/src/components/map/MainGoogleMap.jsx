@@ -38,7 +38,7 @@ const loadScript = (url, callback) => {
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-const MainGoogleMap = () => {
+const MainGoogleMap = (props) => {
   const styles = useStyles();
 
   const [googleApiLoaded, setGoogleApiLoaded] = useState(false);
@@ -72,18 +72,20 @@ const MainGoogleMap = () => {
           getCenterLocation={getCenterLocation}
         />
       </div>
-      {userInfo.is_caregiver ? <CaregiverMap
-        googleApiLoaded={googleApiLoaded}
-        centerLocation={centerLocation}
-      /> : <RemoverMap
-      googleApiLoaded={googleApiLoaded}
-      centerLocation={centerLocation}
-    />}
-
-      {/* <DropOffMap
-        googleApiLoaded={googleApiLoaded}
-        centerLocation={centerLocation}
-      /> */}
+      { props.location.state ?
+        <DropOffMap
+          googleApiLoaded={googleApiLoaded}
+          centerLocation={centerLocation}
+        /> :
+        userInfo.is_caregiver ?
+        <CaregiverMap
+            googleApiLoaded={googleApiLoaded}
+            centerLocation={centerLocation}
+          /> :
+        <RemoverMap
+          googleApiLoaded={googleApiLoaded}
+          centerLocation={centerLocation}
+        />}
     </div>
   );
 };
