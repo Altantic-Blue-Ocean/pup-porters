@@ -24,7 +24,7 @@ const loadScript = (url, callback) => {
   script.type = "text/javascript";
 
   if (script.readyState) {
-    script.onreadystatechange = function() {
+    script.onreadystatechange = function () {
       if (script.readyState === "loaded" || script.readyState === "complete") {
         script.onreadystatechange = null;
         callback();
@@ -43,41 +43,27 @@ const MainGoogleMap = () => {
 
   const [googleApiLoaded, setGoogleApiLoaded] = useState(false);
   const [centerLocation, setCenterLocation] = useState({});
-  const { currentUser } = useAuth();
+
+  const { currentUser, userInfo, logout } = useAuth()
 
   useEffect(() => {
-
     loadScript(`https://maps.googleapis.com/maps/api/js?key=${config.token}&libraries=places`, () => {
       setGoogleApiLoaded(true);
-
     });
-    setCenterLocation({lat: 37.773972, lng: -122.431297});
-  }, []);
 
+    setCenterLocation({ lat: 37.773972, lng: -122.431297 });
+  }, []);
 
   const getCenterLocation = async (place) => {
     try {
       const res = await axios.get(`/center?input=${place}`);
       setCenterLocation(res.data.longLat);
-
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const hardcodedRole = () => {
-  //   console.log(currentUser.email)
-  //   if (JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com') {
-  //     setRole('caregiver')
-  //   } else {
-  //     setRole('remover')
-  //   }
-  // }
-
-  // const role = JSON.stringify(currentUser.email) === 'yukiyamamoto710@gmail.com' ? 'caregiver': 'remover';
-  // console.log(role);
   return (
-    <div className="App" style={{ width: '200%', marginLeft: 50}}>
+    <div className="App" style={{ width: '200%', marginLeft: 50 }}>
       <Drawer />
       <br /><br />
       <div className={styles.searchBar}>
@@ -86,25 +72,14 @@ const MainGoogleMap = () => {
           getCenterLocation={getCenterLocation}
         />
       </div>
-      { currentUser.email === 'yukiyamamoto710@gmail.com' ?
-      <CaregiverMap
-          googleApiLoaded={googleApiLoaded}
-          centerLocation={centerLocation}
-        /> :
-        <RemoverMap
-          googleApiLoaded={googleApiLoaded}
-          centerLocation={centerLocation}
-        />}
-      {/* {userInfo.isCaregiver ?
-        <CaregiverMap
-          googleApiLoaded={googleApiLoaded}
-          centerLocation={centerLocation}
-        /> :
-        <RemoverMap
-          googleApiLoaded={googleApiLoaded}
-          centerLocation={centerLocation}
-        />
-      } */}
+      {userInfo.is_caregiver ? <CaregiverMap
+        googleApiLoaded={googleApiLoaded}
+        centerLocation={centerLocation}
+      /> : <RemoverMap
+      googleApiLoaded={googleApiLoaded}
+      centerLocation={centerLocation}
+    />}
+
       {/* <DropOffMap
         googleApiLoaded={googleApiLoaded}
         centerLocation={centerLocation}

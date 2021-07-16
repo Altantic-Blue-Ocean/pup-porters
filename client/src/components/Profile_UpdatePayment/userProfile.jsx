@@ -59,7 +59,7 @@ function UserProfile (props) {
     console.log('user', user.currentUser)
     const option = {
       method: 'get',
-      url: `http://127.0.0.1:3000/user`,
+      url: `/user`,
       data: {
         userName: userName
       },

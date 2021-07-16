@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, TextField, Button, Slide } from '@material-ui/core';
 import { Link, useHistory } from "react-router-dom";
+import axios from 'axios';
 
 import DogType from './DogType.jsx';
 

@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     fontSize: 75,
     fontWeight: 300,
   },
+
   button: {
     height: 100,
     width: 500,
@@ -70,7 +71,7 @@ function CaregiverMap(props) {
 
   const onMapClick = React.useCallback((event) => {
     let icon = {
-      url: 'http://localhost:300/poop.png',
+      url: 'http://localhost:3000/poop.png',
       scaledSize: new google.maps.Size(50, 50),
   };
 

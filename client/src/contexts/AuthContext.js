@@ -11,8 +11,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
-  const [userInfo, setUserInfo] = useState({})
-  // const [role, setRole] = useState('caregiver')
+  const [userInfo, setUserInfo] = useState()
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -25,6 +24,7 @@ export function AuthProvider({ children }) {
   function logout() {
     return auth.signOut()
   }
+
 
   function getUserInfo() {
     console.log(JSON.stringify(currentUser.uid))
@@ -41,17 +41,31 @@ export function AuthProvider({ children }) {
     })
   }
 
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setCurrentUser(user)
       setLoading(false)
-    })
 
+    })
     return unsubscribe
   }, [])
 
+  useEffect(() => {
+    if (currentUser) {
+      axios.get(`/user/${currentUser.uid}`)
+        .then(response => {
+          setUserInfo(response.data)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  }, [currentUser])
+
   const value = {
     currentUser,
+    userInfo,
     login,
     signup,
     logout,
