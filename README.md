@@ -27,8 +27,14 @@ How to start application
 ```
 npm start
 ```
+#### Sign Up
+![Pup pile for singup](https://media.giphy.com/media/SveBr3U8APfT7NSrGg/giphy.gif)
+#### Caregiver Map
 ![Pup pile for caregivers](https://media.giphy.com/media/tbXjw4eGMdyH93uMMO/giphy.gif)
-![Pup pile for removers](-- Yuki's gif maybe? --)
+#### Remover Map
+![Pup pile for removers]()
+#### Dropoff Map
+![Pup pile for Dropoff](https://media.giphy.com/media/OIDlDyW1xUU39OVupE/giphy.gif)
 
 ## Authors
 * Chris Pak
