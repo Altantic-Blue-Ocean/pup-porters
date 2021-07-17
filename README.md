@@ -32,7 +32,7 @@ npm start
 #### Caregiver Map
 ![Pup pile for caregivers](https://media.giphy.com/media/tbXjw4eGMdyH93uMMO/giphy.gif)
 #### Remover Map
-![Pup pile for removers]()
+![Pup pile for removers](https://media.giphy.com/media/hcDD8O2e1DReyaYJQF/giphy.gif)
 #### Dropoff Map
 ![Pup pile for Dropoff](https://media.giphy.com/media/OIDlDyW1xUU39OVupE/giphy.gif)
 
