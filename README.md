@@ -7,7 +7,6 @@ Table of contents
 <!--ts-->
   * [Dependencies](#Dependencies)
   * [Installing](#Installing)
-  * [Installing](#Installing)
   * [Running](#Running)
   * [Authors](#Authors)
 <!--te-->
