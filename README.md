@@ -1,6 +1,17 @@
 # Pup Porters
 Application service providing pet owners or caregivers a dog waste removal on user designated location.
 
+Table of contents
+==================
+
+<!--ts-->
+  * [Dependencies](#Dependencies)
+  * [Installing](#Installing)
+  * [Installing](#Installing)
+  * [Running](#Running)
+  * [Authors](#Authors)
+<!--te-->
+
 ## Getting Started
 These instructions will give you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on deploying the project on a live system.
 
